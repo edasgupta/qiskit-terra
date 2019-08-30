@@ -75,4 +75,11 @@ class TestAssertProduct(QiskitTestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    suite = unittest.TestSuite()
+    for i in range(10000):
+        suite.addTest(TestAssertProduct("test_assert_product"))
+        suite.addTest(TestAssertProduct("test_assert_not_product"))
+        suite.addTest(TestAssertProduct("test_with_bits"))
+        suite.addTest(TestAssertProduct("test_with_registers"))
+    runner = unittest.TextTestRunner()
+    runner.run(suite)
